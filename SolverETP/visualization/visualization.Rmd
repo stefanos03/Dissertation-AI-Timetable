@@ -1,0 +1,243 @@
+---
+title: "Visualization"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+### Set up ggplot library
+```{r}
+
+library(ggplot2)
+```
+
+```{r}
+Data<- read.csv("Hill.csv",header=T)
+```
+
+
+```{r}
+Data1<- read.csv("Simu.csv",header=T)
+```
+
+```{r}
+Data2<- read.csv("Tabu.csv",header=T)
+```
+
+```{r}
+p<-ggplot(Data,aes(Iterations))
+p<-p+geom_line(aes(y=Data$Trent92,colour=Iterations))+ggtitle("Results from Hill Climbing Benchmark of Toronto (Trent92)")+ylab("Penalty cost")
+p
+v<-ggplot(Data1,aes(Iterations))
+v<-v+geom_line(aes(y=Data1$Trent92,colour=Iterations))+ggtitle("Results from Simulated annealing Benchmark of Toronto (Trent92)")+ylab("Penalty cost")
+v
+c<-ggplot(Data2,aes(Iterations))
+c<-c+geom_line(aes(y=Data2$Trent92,colour=Iterations))+ggtitle("Results from Tabu search Benchmark of Toronto (Trent92)")+ylab("Penalty cost")
+c
+
+##p<-ggplot(Data2,aes(Iterations))
+##p<-p+geom_line(aes(y=Data2$test1,colour=Iterations))+ggtitle("Results from Tabu search Benchmark of Toronto (Trent92)")+ylab("Penalty cost")
+##p
+
+```
+#hill climbing line plot 
+
+```{r}
+
+t=Data$Iterations
+
+par(mfcol=c(2,2))
+plot(t,Data$Carleton92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton92", main="Hill-Climbing Carleton92")
+plot(t,Data$Carleton91,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton91", main="Hill-Climbing Carleton91")
+plot(t,Data$EarlHaig83,type="l", col="blue", lwd=1, xlab="iterations", ylab="EarlHaig83", main="Hill-Climbing EarlHaig83")
+plot(t,Data$EdHEC92,type="l", col="blue", lwd=1, xlab="iterations", ylab="EdHEC92", main="Hill-Climbing EdHEC92")
+plot(t,Data$KingFahd93,type="l", col="blue", lwd=1, xlab="iterations", ylab="KingFahd93", main="Hill-Climbing KingFahd93")
+plot(t,Data$LSE91,type="l", col="blue", lwd=1, xlab="iterations", ylab="LSE91", main="Hill-Climbing LSE91")
+plot(t,Data$Pur93,type="l", col="blue", lwd=1, xlab="iterations", ylab="Pur93", main="Hill-Climbing Pur93")
+plot(t,Data$Rye92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Rye92", main="Hill-Climbing Rye92")
+plot(t,Data$St.Andrews83,type="l", col="blue", lwd=1, xlab="iterations", ylab="St.Andrew83", main="Hill-Climbing St.Andrew83")
+plot(t,Data$Trent92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Trent92", main="Hill-Climbing Trent92")
+plot(t,Data$TorontoAS92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoAS92", main="Hill-Climbing TorontoAS92")
+plot(t,Data$TorontoE92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoE92", main="Hill-Climbing TorontoE92")
+plot(t,Data$YorkMills83,type="l", col="blue", lwd=1, xlab="iterations", ylab="YorkMills83", main="Hill-Climbing YorkMills83")
+```
+
+
+
+
+
+
+
+#simulate annealing line plot 
+
+```{r}
+
+t=Data1$Iterations
+par(mfcol=c(2,2))
+plot(t,Data1$Carleton92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton92", main="simulated annealing Carleton92")
+plot(t,Data1$Carleton91,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton91", main="simulated annealing Carleton91")
+plot(t,Data1$EarlHaig83,type="l", col="blue", lwd=1, xlab="iterations", ylab="EarlHaig83", main="simulated annealing EarlHaig83")
+plot(t,Data1$EdHEC92,type="l", col="blue", lwd=1, xlab="iterations", ylab="EdHEC92", main="simulated annealing EdHEC92")
+plot(t,Data1$KingFahd93,type="l", col="blue", lwd=1, xlab="iterations", ylab="KingFahd93", main="simulated annealing KingFahd93")
+plot(t,Data1$LSE91,type="l", col="blue", lwd=1, xlab="iterations", ylab="LSE91", main="simulated annealing LSE91")
+plot(t,Data1$Pur93,type="l", col="blue", lwd=1, xlab="iterations", ylab="Pur93", main="simulated annealing Pur93")
+plot(t,Data1$Rye92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Rye92", main="simulated annealing Rye92")
+plot(t,Data1$St.Andrews83,type="l", col="blue", lwd=1, xlab="iterations", ylab="St.Andrew83", main="simulated annealing St.Andrew83")
+plot(t,Data1$Trent92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Trent92", main="simulated annealing Trent92")
+plot(t,Data1$TorontoAS92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoAS92", main="simulated annealing TorontoAS92")
+plot(t,Data1$TorontoE92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoE92", main="simulated annealing TorontoE92")
+plot(t,Data1$YorkMills83,type="l", col="blue", lwd=1, xlab="iterations", ylab="YorkMills83", main="simulated annealing YorkMills83")
+```
+
+
+
+#Tabu search
+
+```{r}
+
+t=Data2$Iterations
+par(mfcol=c(2,2))
+plot(t,Data2$Carleton92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton92", main="tabu search Carleton92")
+plot(t,Data2$Carleton91,type="l", col="blue", lwd=1, xlab="iterations", ylab="Carleton91", main="tabu search Carleton91")
+plot(t,Data2$EarlHaig83,type="l", col="blue", lwd=1, xlab="iterations", ylab="EarlHaig83", main="tabu search EarlHaig83")
+plot(t,Data2$EdHEC92,type="l", col="blue", lwd=1, xlab="iterations", ylab="EdHEC92", main="tabu search EdHEC92")
+plot(t,Data2$KingFahd93,type="l", col="blue", lwd=1, xlab="iterations", ylab="KingFahd93", main="tabu search KingFahd93")
+plot(t,Data2$LSE91,type="l", col="blue", lwd=1, xlab="iterations", ylab="LSE91", main="tabu search LSE91")
+
+plot(t,Data2$Rye92,type="l", col="blue", lwd=1, xlab="iterations", ylab="Rye92", main="tabu search Rye92")
+plot(t,Data2$St.Andrews83,type="l", col="blue", lwd=1, xlab="iterations", ylab="St.Andrew83", main="tabu search St.Andrew83")
+plot(t,Data2$Trent9,type="l", col="blue", lwd=1, xlab="iterations", ylab="Trent92", main="tabu search Trent92")
+plot(t,Data2$TorontoAS92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoAS92", main="tabu search TorontoAS92")
+plot(t,Data2$TorontoE92,type="l", col="blue", lwd=1, xlab="iterations", ylab="TorontoE92", main="tabu search TorontoE92")
+plot(t,Data2$YorkMills83,type="l", col="blue", lwd=1, xlab="iterations", ylab="YorkMills83", main="tabu search YorkMills83")
+```
+
+#Boxplots car f.92
+
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data$Car.f.92,Data1$Car.f.92,Data2$Car.f.92,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs Carleton92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data$Carleton92,Data1$Carleton92,Data2$Carleton92,names = c("Tabu","Simulated","Hill"),main="Best Run Carleton92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots car f.91
+
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data$Car.s.91,Data1$Car.s.91,Data2$Car.s.91,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs Carleton91",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data$Carleton91,Data1$Carleton91,Data2$Carleton91,names = c("Tabu","Simulated","Hill"),main="Best Run Carleton91",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Ear-f-83 
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Ear.f.83 ,Data1$Ear.f.83,Data$Ear.f.83  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs EarlHaig83",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$EarlHaig83,Data1$EarlHaig83,Data$EarlHaig83,names = c("Tabu","Simulated","Hill"),main="Best Run EarlHaig83",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Hec-s-92 
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Hec.s.92 ,Data1$Hec.s.92,Data$Hec.s.92  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs EdHEC92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$EdHEC92,Data1$EdHEC92,Data$EdHEC92,names = c("Tabu","Simulated","Hill"),main="Best Run EdHEC92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Kfu-s-93 
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data1$Kfu.s.93 ,Data2$Kfu.s.93,Data$Kfu.s.93  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs KingFahd93",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data1$KingFahd93,Data2$KingFahd93,Data$KingFahd93,names = c("Tabu","Simulated","Hill"),main="Best Run KingFahd93",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+
+#Boxplots Lse-f-91 
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Lse.f.91 ,Data1$Lse.f.91 ,Data$Lse.f.91   ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs LSE91",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$LSE91,Data1$LSE91,Data$LSE91,names = c("Tabu","Simulated","Hill"),main="Best Run LSE91",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Pur-s-93 NOT SO GOOD
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Pur.s.93 ,Data1$Pur.s.93 ,Data$Pur.s.93   ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs Pur93",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$Pur93,Data1$Pur93,Data$Pur93,names = c("Tabu","Simulated","Hill"),main="Best Run Pur93",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Rye-s-93
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data1$Rye.s.93 ,Data$Rye.s.93 ,Data2$Rye.s.93   ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs Rye92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data1$Rye92,Data$Rye92,Data2$Rye92,names = c("Tabu","Simulated","Hill"),main="Best Run Rye92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Sta-f-83
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Sta.f.83 ,Data1$Sta.f.83 ,Data$Sta.f.83  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs St.Andrews83",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$St.Andrews83,Data1$St.Andrews83,Data$St.Andrews83,names = c("Tabu","Simulated","Hill"),main="Best Run St.Andrews83",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Tre-s-92
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Tre.s.92 ,Data1$Tre.s.92 ,Data$Tre.s.92  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs Trent92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$Trent92,Data1$Trent92,Data$Trent92,names = c("Tabu","Simulated","Hill"),main="Best Run Trent92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Uta-s-92
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Uta.s.92 ,Data$Uta.s.92 ,Data1$Uta.s.92  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs TorontoAS92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$TorontoAS92,Data$TorontoAS92,Data1$TorontoAS92,names = c("Tabu","Simulated","Hill"),main="Best Run TorontoAS92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots Ute-s-92
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$Ute.s.92 ,Data$Ute.s.92 ,Data1$Ute.s.92  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs TorontoE92",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$TorontoE92,Data$TorontoE92,Data1$TorontoE92,names = c("Tabu","Simulated","Hill"),main="Best Run TorontoE92",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+#Boxplots yor-f-83
+```{r}
+par(mfcol=c(1,2))
+boxplot(Data2$yor.f.83 ,Data1$yor.f.83 ,Data$yor.f.83  ,names = c("Tabu","Simulated","Hill"),main="Result after 10 runs YorkMills83",col=c("red","blue","yellow"),ylab="Penalty cost")
+boxplot(Data2$YorkMills83,Data1$YorkMills83,Data$YorkMills83,names = c("Tabu","Simulated","Hill"),main="Best Run YorkMills83",col=c("red","blue","yellow"),ylab="Penalty cost")
+```
+
+
+#DATASET OF YORKMILLS83
+```{r}
+x<-Data$Iterations
+y0<- Data$YorkMills83
+y1<-Data1$YorkMills83
+y2<-Data2$YorkMills83
+
+ggplot(data.frame(x,y0,y1,y2),aes(x=x,y=y2))+geom_line(color="yellow")+geom_line(y=y1,color="blue")+geom_line(y=y0,color="red")+labs(x="Iterations",y="Penalty Cost",title="Results comparison for yorkmills83")
+```
+
+##DATASET OF EDHEC92
+```{r}
+x<-Data$Iterations
+y0<- Data$EdHEC92
+y1<-Data1$EdHEC92
+y2<-Data2$EdHEC92
+
+ggplot(data.frame(x,y0,y1,y2),aes(x=x,y=y2))+geom_line(color="yellow")+geom_line(y=y1,color="blue")+geom_line(y=y0,color="red")+labs(x="Iterations",y="Penalty Cost",title="Results comparison for yorkmills83")
+```
+
+##DATASET OF lse91
+```{r}
+x<-Data$Iterations
+y0<- Data$LSE91
+y1<-Data1$LSE91
+y2<-Data2$LSE91
+
+ggplot(data.frame(x,y0,y1,y2),aes(x=x,y=y2))+geom_line(color="yellow")+geom_line(y=y1,color="blue")+geom_line(y=y0,color="red")+labs(x="Iterations",y="Penalty Cost",title="Results comparison for LSE91")
+```

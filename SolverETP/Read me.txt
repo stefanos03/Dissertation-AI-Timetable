@@ -1,0 +1,2 @@
+To run the program click the Jar file.The results will automaticlly saved in the Solutions file.
+The vsualization file has the graphcal results from the system and the presentations.
