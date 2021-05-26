@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class test {
 
-    static final String directory = "C:\\Users\\stefanoschatz\\Desktop\\java code\\SolverETP\\carter_datasets\\";
+    static final String directory = "C:\\Users\\Dell\\Documents\\GitHub\\Dissertation-AI-Timetable\\SolverETP\\carter_datasets\\";
 
     public static void main(String[] args) {
         String dir_crs="";

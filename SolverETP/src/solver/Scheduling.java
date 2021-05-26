@@ -113,7 +113,7 @@ public class Scheduling {
     //print the solutions
     public void exportSchedule(String filename) {
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\stefanoschatz\\Desktop\\java code\\SolverETP\\Solutions\\" + filename + ".sol");
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\Dissertation-AI-Timetable\\SolverETP\\Solutions\\" + filename + ".sol");
             fileWriter.write(this.getSolution());
             fileWriter.close();
             System.out.println("File "+filename+" file saved successfully"); 

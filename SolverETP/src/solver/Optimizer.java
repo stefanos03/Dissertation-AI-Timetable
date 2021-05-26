@@ -487,7 +487,7 @@ private int solution=0;
      //write the solution for from the Optimizer
     public void exportSchedule(String filename) {
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\stefanoschatz\\Desktop\\java code\\SolverETP\\Solutions\\" + filename + ".sol");
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Dell\\Documents\\GitHub\\Dissertation-AI-Timetable\\SolverETP\\" + filename + ".sol");
             fileWriter.write(this.solution);
             fileWriter.close();
             System.out.println("File "+filename+" file saved successfully"); 
